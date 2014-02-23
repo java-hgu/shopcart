@@ -3,6 +3,7 @@ package com.logicify.shopcart.servlet.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,29 +25,36 @@ public class addprod extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/admin/addprod.jsp").forward(request, response);
+		
+		try {
+			Collection categories = Factory.getInstance().getCategoryDao().getAllCategories();
+			request.setAttribute("categories", categories);
+			request.getRequestDispatcher("/admin/addprod.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String prodname = request.getParameter("prodname");
 		String proddesc = request.getParameter("proddesc");
+		String[] selectcat = request.getParameterValues("selectcat");
 		if(!prodname.isEmpty() && !proddesc.isEmpty()) {
-		
-			Category cat = new Category();
-			cat.setId(Long.parseLong("4"));
-			Category cat2 = new Category();
-			cat2.setId(Long.parseLong("3"));
 			
 			
+			
+			Set cats = new HashSet();
+			
+			for(int i = 0; i < selectcat.length; i++) {
+				Category cat = new Category();
+				cat.setId(Long.parseLong(selectcat[i]));
+				cats.add(cat);
+			}
 			
 			Product prod = new Product();
 			prod.setName(prodname);
 			prod.setDescription(proddesc);
-			
-			Set cats = new HashSet();
-			cats.add(cat);
-			cats.add(cat2);
 			prod.setCategories(cats);
 					
 			response.setContentType("text/html");

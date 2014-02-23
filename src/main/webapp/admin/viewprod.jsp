@@ -20,7 +20,7 @@
         	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addprod">Add a product</a></div>
         	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addcat">Add a category</a></div>
         </div>
-        
+      
         <div class="content">
         	<div style="width: 40%; height: 300px; overflow-y: scroll; margin: 10px auto;">
 	        	<c:forEach var="product" items="${products}">

@@ -22,11 +22,17 @@
         </div>
         
         <div class="content">
-        	<form method="post" action="addprod">
+        	<form method="post" action="addprod">	
+        			<select multiple="multiple" size="5" name="selectcat">
+        				<c:forEach var="category" items="${categories}">
+							<option selected value="<c:out value="${category.id}" />"><c:out value="${category.name}" /></option>
+						</c:forEach>
+					</select>
+					
         			<p>Name: </p> <input type="text" name="prodname" value="">
-        			<p>Description: </p>  <textarea name="proddesc" cols="40" rows="3"></textarea>
-        			
-        			<input type="submit" value="Add category" >
+        			<p>Description: </p>  <textarea name="proddesc" cols="30" rows="2"></textarea>
+        			<br>
+        			<input type="submit" value="Add product" >
         		</form>
         </div>
     </body>
