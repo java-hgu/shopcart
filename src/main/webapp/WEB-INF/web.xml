@@ -11,60 +11,10 @@
     <description></description>
     <display-name>admin</display-name>
     <servlet-name>admin</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.admin.admin</servlet-class>
+    <servlet-class>com.logicify.shopcart.servlet.admin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>admin</servlet-name>
-    <url-pattern>/admin/panel</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>viewcat</display-name>
-    <servlet-name>viewcat</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.admin.viewcat</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>viewcat</servlet-name>
-    <url-pattern>/admin/viewcat</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>addprod</display-name>
-    <servlet-name>addprod</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.admin.addprod</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>addprod</servlet-name>
-    <url-pattern>/admin/addprod</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>addcat</display-name>
-    <servlet-name>addcat</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.admin.addcat</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>addcat</servlet-name>
-    <url-pattern>/admin/addcat</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>viewprod</display-name>
-    <servlet-name>viewprod</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.admin.viewprod</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>viewprod</servlet-name>
-    <url-pattern>/admin/viewprod</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>qq</display-name>
-    <servlet-name>qq</servlet-name>
-    <servlet-class>com.logicify.shopcart.servlet.qq</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>qq</servlet-name>
-    <url-pattern>/qq</url-pattern>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
 </web-app>

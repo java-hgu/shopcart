@@ -15,14 +15,14 @@
         </div>
         
         <div class="menu">
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/viewprod">View products</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/viewcat">View categories</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addprod">Add a product</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addcat">Add a category</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=viewprod">View products</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=viewcat">View categories</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=addprod">Add a product</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=addcat">Add a category</a></div>
         </div>
         
         <div class="content">
-        	<form id="myform" method="post" action="addcat">
+        	<form id="myform" method="post" action="admin?action=addcat">
         			<p>Name: </p> <input type="text" name="catname" value="">
         			<p>Description: </p>  <textarea name="catdesc" cols="40" rows="3"></textarea>
         			

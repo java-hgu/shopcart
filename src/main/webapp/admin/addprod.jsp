@@ -15,14 +15,14 @@
         </div>
         
         <div class="menu">
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/viewprod">View products</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/viewcat">View categories</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addprod">Add a product</a></div>
-        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin/addcat">Add a category</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=viewprod">View products</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=viewcat">View categories</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=addprod">Add a product</a></div>
+        	<div class="undermenu"><a href="${pageContext.request.contextPath}/admin?action=addcat">Add a category</a></div>
         </div>
         
         <div class="content">
-        	<form method="post" action="addprod">	
+        	<form method="post" action="admin?action=addprod">	
         			<select multiple="multiple" size="5" name="selectcat">
         				<c:forEach var="category" items="${categories}">
 							<option selected value="<c:out value="${category.id}" />"><c:out value="${category.name}" /></option>
