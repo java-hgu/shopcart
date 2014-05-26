@@ -9,29 +9,24 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hsqldb.lib.Iterator;
 
-import com.logicify.shopcart.logic.Category;
-import com.logicify.shopcart.logic.Product;
+import com.logicify.shopcart.domain.Category;
+import com.logicify.shopcart.domain.Product;
 import com.logicify.shopcart.dao.CategoryDao;
 import com.logicify.shopcart.util.HibernateUtil;
 
 public class CategoryDaoImpl implements CategoryDao {
-
+	
 	public void addCategory(Category category) throws SQLException {
 		Session session = null;
 		
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSession();
 			session.beginTransaction();
 			session.save(category);
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: insert error (addCategory) " + e.getMessage());
 		}
 	}
 
@@ -39,16 +34,12 @@ public class CategoryDaoImpl implements CategoryDao {
 		Session session = null;
 		
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSession();
 			session.beginTransaction();
 			session.update(category);
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: update error (updateCategory) " + e.getMessage());
 		}
 	}
 
@@ -57,33 +48,25 @@ public class CategoryDaoImpl implements CategoryDao {
 		Category category = null;
 		
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSession();
 			category = (Category) session.get(Category.class, catid);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'findById'", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: findById error (getCategoryById) " + e.getMessage());
 		}
 		
 		return category;
 	}
 
-	public Collection getAllCategories() throws SQLException {
+	public Collection<Category> getAllCategories() throws SQLException {
 		Session session = null;
-		List categories = new ArrayList<Category>();
+		List<Category> categories = new ArrayList<Category>();
 		
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSession();
 			categories = session.createCriteria(Category.class).list();
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'getAll'", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: getAll error (getAllCategories) " + e.getMessage());
 		}
 		
 		return categories;
@@ -93,25 +76,21 @@ public class CategoryDaoImpl implements CategoryDao {
 		Session session = null;
 		
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSession();
 			session.beginTransaction();
 			session.delete(category);
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'delete'", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: delete error (deleteCategory) " + e.getMessage());
 		}
 	}
 
-	public Collection getCategoriesByProduct(Product product) throws SQLException {
+	public Collection<Category> getCategoriesByProduct(Product product) throws SQLException {
 		Session session = null;
-		List categories = new ArrayList<Category>();
+		List<Category> categories = new ArrayList<Category>();
 		
 		try {
-			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session = HibernateUtil.getSession();
 			session.beginTransaction();
 			
 			Long prodid = product.getId();
@@ -120,11 +99,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			categories = (List<Category>) query.list();
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'delete'", JOptionPane.OK_OPTION);
-		} finally {
-			if(session != null && session.isOpen()) {
-				session.close();
-			}
+			System.err.println("Error: select error (getCategoriesByProduct) " + e.getMessage());
 		}
 		return categories;
 	}

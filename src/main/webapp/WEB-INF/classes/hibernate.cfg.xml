@@ -14,9 +14,10 @@
     <property name="current_session_context_class">thread</property>
     <property name="show_sql">true</property>
     <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
-
-    <mapping resource="com/logicify/shopcart/logic/category.hbm.xml"/>
-    <mapping resource="com/logicify/shopcart/logic/product.hbm.xml"/>
+	<property name="hibernate.default_schema">public</property>
+	
+	<mapping class="com.logicify.shopcart.domain.Product"/>
+    <mapping class="com.logicify.shopcart.domain.Category"/>
 
   </session-factory>
   
